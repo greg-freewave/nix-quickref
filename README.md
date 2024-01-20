@@ -39,7 +39,7 @@ Here is a flake.nix that takes only the default input and specifies a single out
 ```nix
 {
   outputs = { self }: {
-    foo = bar;
+    foo = "bar";
   };
 }
 ```
