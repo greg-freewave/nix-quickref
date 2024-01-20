@@ -11,7 +11,7 @@
 A "nix flake" is a directory that contains a file called `nix.flake`.
 
 `nix.flake` must contain a single attribute set that must contain:
-* `outputs` a function
+* `outputs` a function that produces an attribute set
 
 and can optionally contain:
 * `description` a string description of the flake
