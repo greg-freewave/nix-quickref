@@ -2,7 +2,20 @@
 
 * formatter: https://github.com/nix-community/nixpkgs-fmt
 * language server: https://github.com/oxalica/nil and https://github.com/nix-community/nixd/
-  * TODO: pick one to recommend or explain why to chose one over the other 
+  * TODO: pick one to recommend or explain why to chose one over the other
+* nixpkgs manual: https://nixos.org/manual/nixpkgs/stable/
+
+# Repl
+Start the repl with `nix repl`.<br>
+You probably want some packages available though so start it importing nix packages `nix repl --expr 'import <nixpkgs>{}'`<br>
+```
+$> nix repl --expr 'import <nixpkgs>{}'
+nix-repl> lib.trivial.concat [ 1 2 ] [ 3 4 ]
+[ 1 2 3 4 ]
+nix-repl> stdenv.mkDerivation
+«lambda @ /nix/store/ildml01gk7v91fba35whklllfi343lvq-source/pkgs/stdenv/generic/make-derivation.nix:604:3»
+```
+
 
 # Flakes
 
