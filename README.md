@@ -356,6 +356,41 @@ path:/Users/me/nix-test?lastModified=1705784732&narHash=sha256-jHGeSNBzH%2BmCLwr
         └───hello: package 'hello-2.12.1'
 ```
 
+# Best Practices
+
+### Reference deps by package
+When writing scripts in Nix files, reference the deps they need _in_ the scripts rather than as build inputs.<br>
+This ensures that the generated scripts are using absolute paths to artifacts in the nix store rather than hoping the tools exist.<br>
+It also means that if you spelled something wrong you will get build errors rather than runtime errors.
+
+```nix
+// DONT, deps `curl` and `jq` are implicit and could possibly be not available
+///////////////////////
+let
+  simplePackage = pkgs.writeShellScriptBin "whatIsMyIp" ''
+    curl http://httpbin.org/get | jq --raw-output .origin
+  '';
+in
+stdenv.mkDerivation rec {
+  name = "implicitly-available-deps";
+  buildInputs = [ simplePackage pkgs.jq pkgs.curl ];
+}
+
+
+// DO, deps `curl` and `jq` are explicit and if the derivation runs must be available
+///////////////////////
+let
+  simplePackage = pkgs.writeShellScriptBin "whatIsMyIp" ''
+    ${pkgs.curl}/bin/curl http://httpbin.org/get \
+      | ${pkgs.jq}/bin/jq --raw-output .origin
+  '';
+in
+stdenv.mkDerivation rec {
+  name = "explicitly-available-deps";
+  buildInputs = [ simplePackage ];
+}
+```
+
 # Formatting
 
 TODO
