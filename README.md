@@ -364,8 +364,8 @@ This ensures that the generated scripts are using absolute paths to artifacts in
 It also means that if you spelled something wrong you will get build errors rather than runtime errors.
 
 ```nix
-// DONT, deps `curl` and `jq` are implicit and could possibly be not available
-///////////////////////
+# DONT, deps `curl` and `jq` are implicit and could possibly be not available
+###########################
 let
   simplePackage = pkgs.writeShellScriptBin "whatIsMyIp" ''
     curl http://httpbin.org/get | jq --raw-output .origin
@@ -377,8 +377,8 @@ stdenv.mkDerivation rec {
 }
 
 
-// DO, deps `curl` and `jq` are explicit and if the derivation runs must be available
-///////////////////////
+# DO, deps `curl` and `jq` are explicit and if the derivation runs must be available
+###########################
 let
   simplePackage = pkgs.writeShellScriptBin "whatIsMyIp" ''
     ${pkgs.curl}/bin/curl http://httpbin.org/get \
