@@ -16,6 +16,15 @@ nix-repl> stdenv.mkDerivation
 «lambda @ /nix/store/ildml01gk7v91fba35whklllfi343lvq-source/pkgs/stdenv/generic/make-derivation.nix:604:3»
 ```
 
+# Useful functions
+
+#### Call a file as a function
+`callPackage`
+```nix
+#  result  = callPackage  path-to-file.nix argument
+mixRelease = callPackage ./mix-release.nix { };
+```
+
 
 # Flakes
 
