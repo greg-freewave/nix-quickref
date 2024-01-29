@@ -421,6 +421,36 @@ TODO
 
 https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-fmt.html
 
+# Legacy commands and their replacements
 
+### `nix-channel`
+`nix-channel` manages software package versions through stable/unstable/test channels.
+
+**Do not use**. Completely replaced by the `inputs` section of a flake.
+
+### `nix-env`
+
+`nix-env` is used to manage software packages in the user environment.
+
+**Do not use**. Use something like `nix-darwin` or `home-manager`
+
+### `nix-shell`
+
+`nix-shell` creates a temporary shell environment, which is useful for development and testing.
+
+ In Flakes, this tool is divided into three sub-commands:<br>
+ `nix develop`, `nix shell`, and `nix run`. 
+
+### `nix-build`
+
+`nix-build` builds Nix packages and places the build results in /nix/store, but it does not record them in Nix's declarative configuration.
+
+ Replaced with `nix build`
+
+### `nix-collect-garbage`
+
+`nix-collect-garbage` deletes unused Store Objects in /nix/store.
+
+Replaced with `nix store gc --debug`
 
 
