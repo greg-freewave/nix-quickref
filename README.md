@@ -1,6 +1,6 @@
 # nix-quickref
 
-* formatter: [https://github.com/nix-community/nixpkgs-fmt](https://github.com/kamadorueda/alejandra)
+* formatter: https://github.com/kamadorueda/alejandra
 * language server: https://github.com/oxalica/nil and https://github.com/nix-community/nixd/
   * TODO: pick one to recommend or explain why to chose one over the other
 * nixpkgs manual: https://nixos.org/manual/nixpkgs/stable/
@@ -415,11 +415,19 @@ stdenv.mkDerivation rec {
 
 # Formatting
 
-TODO
-
-`nix fmt --help`
+If you are using flakes and you have a `formatter` attribute set you can run:
+`nix fmt`
 
 https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-fmt.html
+
+For using alejandra directly you can run:
+```
+# Whole directory structure
+alejandra .
+
+# Single file
+alejandra my_nix_file.nix
+```
 
 # Legacy commands and their replacements
 
