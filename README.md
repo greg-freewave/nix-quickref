@@ -1,6 +1,6 @@
 # nix-quickref
 
-* formatter: https://github.com/nix-community/nixpkgs-fmt
+* formatter: [https://github.com/nix-community/nixpkgs-fmt](https://github.com/kamadorueda/alejandra)
 * language server: https://github.com/oxalica/nil and https://github.com/nix-community/nixd/
   * TODO: pick one to recommend or explain why to chose one over the other
 * nixpkgs manual: https://nixos.org/manual/nixpkgs/stable/
